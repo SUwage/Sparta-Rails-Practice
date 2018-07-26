@@ -1,10 +1,18 @@
 class GamesController < ApplicationController
   before_action :set_game, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!
+  # before_action :authenticate_user!, only: [:new, :create, :update, :destroy, :edit, :show]
 
   def index
     @games = current_user.games
   end
+
+  # def index
+  #   if authenticate_user!
+  #     redirect_to :games=>'dashboard', :action => 'index'
+  #   else
+  #     redirect_to '/views/games/index.html'
+  #   end
+  # end
 
   def new
     @game = Game.new
