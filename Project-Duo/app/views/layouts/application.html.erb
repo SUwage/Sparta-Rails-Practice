@@ -1,15 +1,47 @@
 <!DOCTYPE html>
+
 <html>
   <head>
+    <meta charset="utf-8">
     <title>ProjectDuo</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
 
+  <%= stylesheet_link_tag "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" %>
+  <%= stylesheet_link_tag "https://fonts.googleapis.com/css?family=Galada" %>
+  <%= javascript_include_tag "https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" %>
+  <%= javascript_include_tag "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" %>
+  <%= javascript_include_tag "https://unpkg.com/scrollreveal/dist/scrollreveal.min.js" %>
+  <%= stylesheet_link_tag "global" %>
+
+  </head>
   <body>
+
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">FOR THE GAMERS WISH LIST</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <% if current_user %>
+              <li><%= button_to 'Log Out', destroy_user_session_path, method: :delete %></li>
+            <% else %>
+              <li><%= link_to 'Log In', new_user_session_path %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
+
     <%= yield %>
   </body>
 </html>
