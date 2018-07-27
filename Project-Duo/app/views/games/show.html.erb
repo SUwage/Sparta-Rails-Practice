@@ -1,6 +1,3 @@
-<h1>Games#show</h1>
-<p>Find me in app/views/games/show.html.erb</p>
-
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -11,6 +8,21 @@
 <p>
   <strong>Description:</strong>
   <%= @game.description %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @game.price %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @game.user.email %>
+</p>
+
+<p>
+  <strong>Genre:</strong>
+  <%= @game.genre.category %>
 </p>
 
 <%= link_to 'Edit', edit_game_path(@game) %> |

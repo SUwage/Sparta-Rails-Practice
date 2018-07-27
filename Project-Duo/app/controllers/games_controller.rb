@@ -1,18 +1,31 @@
 class GamesController < ApplicationController
   before_action :set_game, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!
 
+  # GET /games
+  # GET /games.json
   def index
-    @games = current_user.games
+    @games = Game.all
   end
 
+  # GET /games/1
+  # GET /games/1.json
+  def show
+  end
+
+  # GET /games/new
   def new
     @game = Game.new
   end
 
+  # GET /games/1/edit
+  def edit
+  end
+
+  # POST /games
+  # POST /games.json
   def create
     @game = Game.new(game_params)
-    @game.user = current_user
+
     respond_to do |format|
       if @game.save
         format.html { redirect_to @game, notice: 'Game was successfully created.' }
@@ -24,6 +37,8 @@ class GamesController < ApplicationController
     end
   end
 
+  # PATCH/PUT /games/1
+  # PATCH/PUT /games/1.json
   def update
     respond_to do |format|
       if @game.update(game_params)
@@ -36,6 +51,8 @@ class GamesController < ApplicationController
     end
   end
 
+  # DELETE /games/1
+  # DELETE /games/1.json
   def destroy
     @game.destroy
     respond_to do |format|
@@ -52,6 +69,6 @@ class GamesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def game_params
-      params.require(:game).permit(:title, :description)
+      params.require(:game).permit(:title, :description, :price, :user_id, :genre_id)
     end
 end

@@ -4,7 +4,8 @@ class CreateGames < ActiveRecord::Migration[5.2]
       t.string :title
       t.text :description
       t.integer :price
-      t.integer :user_id
+      t.references :user, foreign_key: true
+      t.references :genre, foreign_key: true
 
       t.timestamps
     end
